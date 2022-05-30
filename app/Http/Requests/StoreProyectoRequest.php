@@ -25,13 +25,13 @@ class StoreProyectoRequest extends FormRequest
     {
         return [
             //
-            'nombre'=>'requiered | min:5 | max:25', 
-            'fechaInicio'=>'requiered', 
-            'subtotal'=>'requiered', 
-            'concepto'=>'requiered | min:5 | max:25', 
-            'comentariosAdicionales'=>'requiered | max: 500', 
-            'proveedor'=>'requiered | min:5 | max:30', 
-            'cliente'=>'requiered | min:5 | max:30'
+            'nombre'=>'required | min:5 | max:25', 
+            'fechaInicio'=>'required', 
+            'subtotal'=>'required', 
+            'concepto'=>'required | min:5 | max:25', 
+            'comentariosAdicionales'=>'required | max: 500', 
+            'proveedor'=>'required | min:5 | max:30', 
+            'cliente'=>'required | min:5 | max:30'
         ];
     }
 }

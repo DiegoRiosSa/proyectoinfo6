@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreEntidadRequest;
 use App\Models\Entidad;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,11 @@ class EntidadController extends Controller
     public function index()
     {
         //
+        $entidad = Entidad::orderBy('created_at', 'desc')->paginate(2);
+
+        return view('dashboard.entidad.entidad',[
+            'entidad'=>$entidad
+        ]);
     }
 
     /**
@@ -25,6 +31,9 @@ class EntidadController extends Controller
     public function create()
     {
         //
+        return view('dashboard.entidad.create',[
+            'entidad'=> new Entidad()
+        ]);
     }
 
     /**
@@ -33,9 +42,12 @@ class EntidadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEntidadRequest $request)
     {
         //
+        Entidad::create($request->validated());
+
+        return back()->with('status', 'Entidad created successfully');
     }
 
     /**
@@ -44,9 +56,10 @@ class EntidadController extends Controller
      * @param  \App\Models\Entidad  $entidad
      * @return \Illuminate\Http\Response
      */
-    public function show(Entidad $entidad)
+    public function show($id)
     {
         //
+        return "Show: ".$id;
     }
 
     /**
@@ -58,6 +71,9 @@ class EntidadController extends Controller
     public function edit(Entidad $entidad)
     {
         //
+        return view('dashboard.entidad.edit',[
+            'entidad' => $entidad
+        ]);
     }
 
     /**
@@ -67,9 +83,11 @@ class EntidadController extends Controller
      * @param  \App\Models\Entidad  $entidad
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Entidad $entidad)
+    public function update(StoreEntidadRequest $request, Entidad $entidad)
     {
         //
+        $entidad->update($request->validated());
+        return back()->with('status', 'Entidad se ha actualizado correctamente');
     }
 
     /**
@@ -81,5 +99,7 @@ class EntidadController extends Controller
     public function destroy(Entidad $entidad)
     {
         //
+        $entidad->delete();
+        return back()->with('status', 'Entidad deleted sucessfully');
     }
 }

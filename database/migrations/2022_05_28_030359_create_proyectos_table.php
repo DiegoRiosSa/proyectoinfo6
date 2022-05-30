@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('nombre', 25);
             $table->string('fechaInicio', 25);
             $table->float('subtotal',7,2);
-            $table->float('iva', 5,2);
-            $table->float('total', 7,2);
+            $table->float('iva', 5,2)->nullable();
+            $table->float('total', 7,2)->nullable();
             $table->string('concepto', 100);
             $table->string('comentariosAdicionales', 200)->nullable();
             $table->enum('estatus', ['Activo','Inactivo'])->nullable()->default('Activo');

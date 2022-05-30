@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('transaccions', function (Blueprint $table) {
             $table->id();
+            $table->enum('tipoTransaccion', ['Anticipo', 'Pago'])->nullable()->default('Pago');
+            $table->float('monto', 8);
+            $table->string('fechaTransaccion', 25);
+            $table->enum('metodo', ['Deposito', 'Transferencia'])->nullable()->default('Deposito');
+            $table->float('referencia', 10);
             $table->timestamps();
         });
     }

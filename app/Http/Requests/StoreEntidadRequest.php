@@ -13,7 +13,7 @@ class StoreEntidadRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,12 @@ class StoreEntidadRequest extends FormRequest
     {
         return [
             //
+            'razonSocial'=>'required | min:5 | max:25',  
+            'persona'=>'required',
+            'RFC'=>'required | min:5 | max:25', 
+            'domicilio'=>'required | min:5 | max:25', 
+            'email'=>'required | min: 10 | max: 25', 
+            'telefono'=>'required | min:5 | max:10'
         ];
     }
 }

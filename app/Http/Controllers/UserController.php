@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProyectoRequest;
-use App\Models\Proyecto;
+use App\Http\Requests\StoreUserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class ProyectoController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,10 @@ class ProyectoController extends Controller
     public function index()
     {
         //
-        $proyecto = Proyecto::orderBy('created_at', 'desc')->paginate(2);
+        $user = User::orderBy('created_at', 'desc')->paginate(2);
 
-        return view('dashboard.proyecto.proyecto',[
-            'proyecto'=>$proyecto
+        return view('dashboard.user.user',[
+            'user'=>$user
         ]);
     }
 
@@ -31,8 +31,8 @@ class ProyectoController extends Controller
     public function create()
     {
         //
-        return view('dashboard.proyecto.create',[
-            'proyecto'=> new Proyecto()
+        return view('dashboard.user.create',[
+            'user'=> new User()
         ]);
     }
 
@@ -42,19 +42,18 @@ class ProyectoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProyectoRequest $request)
+    public function store(StoreUserRequest $request)
     {
         //
-        //dd($request);
-        Proyecto::create($request->validated());
+        User::create($request->validated());
 
-        return back()->with('status', 'Proyecto created successfully');  
+        return back()->with('status', 'User created successfully');  
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Proyecto  $proyecto
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -66,14 +65,14 @@ class ProyectoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Proyecto  $proyecto
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Proyecto $proyecto)
+    public function edit(User $user)
     {
         //
-        return view('dashboard.proyecto.edit',[
-            'proyecto' => $proyecto
+        return view('dashboard.user.edit',[
+            'user' => $user
         ]);
     }
 
@@ -81,27 +80,26 @@ class ProyectoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Proyecto  $proyecto
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreProyectoRequest $request, Proyecto $proyecto)
+    public function update(StoreUserRequest $request, User $user)
     {
         //
-        $proyecto->update($request->validated());
-        return back()->with('status', 'Proyecto se ha actualizado correctamente');
-        
+        $user->update($request->validated());
+        return back()->with('status', 'Usuario se ha actualizado correctamente');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Proyecto  $proyecto
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Proyecto $proyecto)
+    public function destroy(User $user)
     {
-        
-        $proyecto->delete();
-        return back()->with('status', 'Proyecto deleted sucessfully');
+        //
+        $user->delete();
+        return back()->with('status', 'User deleted sucessfully');
     }
 }

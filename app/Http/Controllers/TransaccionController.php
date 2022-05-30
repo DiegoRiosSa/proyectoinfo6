@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTransaccionRequest;
 use App\Models\Transaccion;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,11 @@ class TransaccionController extends Controller
     public function index()
     {
         //
+        $transaccion = Transaccion::orderBy('created_at', 'desc')->paginate(2);
+
+        return view('dashboard.transaccion.transaccion',[
+            'transaccion'=>$transaccion
+        ]);
     }
 
     /**
@@ -25,6 +31,9 @@ class TransaccionController extends Controller
     public function create()
     {
         //
+        return view('dashboard.transaccion.create',[
+            'transaccion'=> new Transaccion()
+        ]);
     }
 
     /**
@@ -33,9 +42,14 @@ class TransaccionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTransaccionRequest $request)
     {
         //
+
+        Transaccion::create($request->validated());
+
+        return back()->with('status', 'Transaccion created successfully');  
+    
     }
 
     /**
@@ -44,9 +58,10 @@ class TransaccionController extends Controller
      * @param  \App\Models\Transaccion  $transaccion
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaccion $transaccion)
+    public function show($id)
     {
         //
+        return "Show: ".$id;
     }
 
     /**
@@ -58,6 +73,9 @@ class TransaccionController extends Controller
     public function edit(Transaccion $transaccion)
     {
         //
+        return view('dashboard.transaccion.edit',[
+            'transaccion' => $transaccion
+        ]);
     }
 
     /**
@@ -67,9 +85,12 @@ class TransaccionController extends Controller
      * @param  \App\Models\Transaccion  $transaccion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transaccion $transaccion)
+    public function update(StoreTransaccionRequest $request, Transaccion $transaccion)
     {
         //
+        $transaccion->update($request->validated());
+        return back()->with('status', 'Transaccion se ha actualizado correctamente');
+        
     }
 
     /**
@@ -81,5 +102,8 @@ class TransaccionController extends Controller
     public function destroy(Transaccion $transaccion)
     {
         //
+        $transaccion->delete();
+        return back()->with('status', 'Transaccion deleted sucessfully');
+    
     }
 }

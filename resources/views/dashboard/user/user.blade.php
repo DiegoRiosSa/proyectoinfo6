@@ -1,37 +1,39 @@
 @extends('layouts.master')
 
 @section('content')
-<h1>Transacciones</h1>
+<h1>Usuarios</h1>
 
-<a href="{{ route('transaccion.create')}}" class="btn btn-success">Registrar Transaccion</a>
+<a href="{{ route('user.create')}}" class="btn btn-success">Registrar Usuario</a>
 
 
 <table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Tipo de Transaccion </th>
-      <th scope="col">Monto</th>
-      <th scope="col">Fecha de Transaccion</th>
-      <th scope="col">Método</th>
-      <th scope="col">Referencia</th>
+      <th scope="col">Nombre </th>
+      <th scope="col">Rol</th>
+      <th scope="col">Email</th>
+      <th scope="col" type="hidden">Password</th>
     </tr>
   </thead>
   <tbody>
     
-    @foreach ($transaccion as $transacciones)
+    @foreach ($user as $users)
       <tr>
-      <th scope="row">{{$transacciones->id}}</th>
-        <td>{{$transacciones->tipoTransaccion}}</td>
-        <td>{{$transacciones->monto}}</td>
-        <td>{{$transacciones->fechaTransaccion}}</td>
-        <td>{{$transacciones->metodo}}</td>
-        <td>{{$transacciones->referencia}}</td>
+      <th scope="row">{{$users->id}}</th>
+        <td>{{$users->name}}</td>
+        <td>{{$users->role}}</td>
+        <td>{{$users->email}}</td>
+        <td>*******         
+            
+
+        </td>
+
         <td>
-          <a href="{{ route('transaccion.edit', $transacciones->id) }}" class="btn btn-secondary">Edit</a>
+          <a href="{{ route('user.edit', $users->id) }}" class="btn btn-secondary">Edit</a>
         </td>
         <td>
-          <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="{{ $transacciones->id }}" type="submit" class="btn btn-danger">Delete</button>
+          <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="{{ $users->id }}" type="submit" class="btn btn-danger">Delete</button>
         </td>
 
       </tr>  
@@ -41,7 +43,7 @@
   </tbody>
 </table>
 
-<div class="mt-3">{{ $transaccion->links() }}</div>
+<div class="mt-3">{{ $user->links() }}</div>
 
 <div class="modal fade" id="deleteModal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

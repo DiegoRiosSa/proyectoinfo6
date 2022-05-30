@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\EntidadController;
 use App\Http\Controllers\ProyectoController;
+use App\Http\Controllers\TransaccionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +22,10 @@ Route::get('/', function () {
 });
 
 Route::resource('/proyecto',ProyectoController::class);
+
+Route::resource('/entidad',EntidadController::class);
+
+Route::resource('/transaccion',TransaccionController::class);
+
+Route::resource('/user',UserController::class);
+

@@ -22,6 +22,8 @@
     </tr>
   </thead>
   <tbody>
+
+
     
     @foreach ($proyecto as $proyectos)
       <tr>
@@ -61,7 +63,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <form id="formDelete" action="{{route('proyecto.destroy', 0)}}" method="PROYECTO">
+        <form id="formDelete" action="{{route('proyecto.destroy', 0)}}" method="POST">
           @csrf
           @method("DELETE")
           <button class="btn btn-danger" type="submit">Eliminar</button>
