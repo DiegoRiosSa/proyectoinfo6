@@ -28,6 +28,8 @@ class StoreProyectoRequest extends FormRequest
             'nombre'=>'required | min:5 | max:25', 
             'fechaInicio'=>'required', 
             'subtotal'=>'required', 
+            'iva',
+            'total',
             'concepto'=>'required | min:5 | max:25', 
             'comentariosAdicionales'=>'required | max: 500', 
             'proveedor'=>'required | min:5 | max:30', 

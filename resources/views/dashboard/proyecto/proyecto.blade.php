@@ -13,6 +13,8 @@
       <th scope="col">Nombre del Proyecto </th>
       <th scope="col">Fecha de Inicio</th>
       <th scope="col">Subtotal</th>
+      <th scope="col">Iva</th>
+      <th scope="col">Total</th>
       <th scope="col">Concepto</th>
       <th scope="col">Comentarios Adicionales</th>
       <th scope="col">Proveedor</th>
@@ -31,6 +33,8 @@
         <td>{{$proyectos->nombre}}</td>
         <td>{{$proyectos->fechaInicio}}</td>
         <td>{{$proyectos->subtotal}}</td>
+        <td>{{$proyectos->iva}}</td>
+        <td>{{$proyectos->total}}</td>
         <td>{{$proyectos->concepto}}</td>
         <td>{{$proyectos->comentariosAdicionales}}</td>
         <td>{{$proyectos->proveedor}}</td>

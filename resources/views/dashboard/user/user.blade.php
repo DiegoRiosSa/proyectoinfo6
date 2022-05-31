@@ -22,7 +22,7 @@
       <tr>
       <th scope="row">{{$users->id}}</th>
         <td>{{$users->name}}</td>
-        <td>{{$users->role}}</td>
+        <td>{{$users->role_id}}</td>
         <td>{{$users->email}}</td>
         <td>*******         
             

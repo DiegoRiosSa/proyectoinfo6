@@ -10,7 +10,7 @@ class Proyecto extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['nombre', 'fechaInicio', 'subtotal', 'concepto', 'comentariosAdicionales', 'proveedor', 'cliente'];
+    protected $fillable = ['nombre', 'fechaInicio', 'subtotal', 'iva', 'total', 'concepto', 'comentariosAdicionales', 'proveedor', 'cliente'];
 
     //public function 
 }

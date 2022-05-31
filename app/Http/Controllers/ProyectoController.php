@@ -55,8 +55,13 @@ class ProyectoController extends Controller
 
         //$total = $request->validated();
         //$iva = .16;
+        $iva = .16;
+        $proyectonuevo = $request->validated();
+        $proyectonuevo["iva"] = $iva;
+        $total = $proyectonuevo["subtotal"]*$iva + $proyectonuevo["subtotal"];
+        $proyectonuevo["total"] = $total;
 
-        Proyecto::create($request->validated());
+        Proyecto::create($proyectonuevo);
 
         return back()->with('status', 'Proyecto created successfully');  
     }
@@ -97,6 +102,8 @@ class ProyectoController extends Controller
     public function update(StoreProyectoRequest $request, Proyecto $proyecto)
     {
         //
+       
+
         $proyecto->update($request->validated());
         return back()->with('status', 'Proyecto se ha actualizado correctamente');
         
