@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEntidadRequest;
 use App\Models\Entidad;
+use App\Models\Persona;
 use Illuminate\Http\Request;
 
 class EntidadController extends Controller
@@ -23,6 +24,13 @@ class EntidadController extends Controller
     {
         //
         $entidad = Entidad::orderBy('created_at', 'desc')->paginate(2);
+        //$persona = Persona::pluck('persona', 'id');
+
+        $tipopersona = Entidad::leftJoin('personas', 'entidads.persona_id', '=',  'personas.id')
+            ->select('entidads.*', 'personas.persona as persona_nombre')
+            ->orderBy('entidads.created_at', 'desc')
+            ->get();
+        ;
 
         return view('dashboard.entidad.entidad',[
             'entidad'=>$entidad
@@ -37,9 +45,26 @@ class EntidadController extends Controller
     public function create()
     {
         //
+        /*$entidad = new Entidad();
+        $persona = Persona::pluck('persona', 'id');
+        return view('dashboard.entidad.create', compact('entidad', 'persona'));*/
+
         return view('dashboard.entidad.create',[
-            'entidad'=> new Entidad()
+            'entidad'=> new Entidad(),
+            'persona_id' => 2
         ]);
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     /**
@@ -51,6 +76,29 @@ class EntidadController extends Controller
     public function store(StoreEntidadRequest $request)
     {
         //
+        /*
+        $iva = .16;
+        $proyectonuevo = $request->validated();
+        $proyectonuevo["iva"] = $iva;
+        $total = $proyectonuevo["subtotal"]*$iva + $proyectonuevo["subtotal"];
+        $proyectonuevo["total"] = $total;
+
+        $proyectonuevo["porPagar"]=$proyectonuevo["total"];
+        $proyectonuevo["porRecibir"]=$proyectonuevo["total"];
+        
+
+        Proyecto::create($proyectonuevo);
+        
+        
+        $tipopersona = Entidad::leftJoin('personas', 'entidads.persona_id', = 'personas.id')
+            ->select('entidads.*', 'personas.persona as persona_nombre')
+            ->orderBy('entidads.created_at', 'desc')
+            ->get();
+        );
+        */
+
+
+
         Entidad::create($request->validated());
 
         return back()->with('status', 'Entidad created successfully');

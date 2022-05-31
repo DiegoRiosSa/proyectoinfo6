@@ -3,7 +3,7 @@
 @section('content')
 <h1>Proyectos</h1>
 
-<a href="{{ route('proyecto.create')}}" class="btn btn-success">Create</a>
+<a href="{{ route('proyecto.create')}}" class="btn btn-success">Registrar Proyecto</a>
 
 
 <table class="table table-hover">
@@ -13,8 +13,9 @@
       <th scope="col">Nombre del Proyecto </th>
       <th scope="col">Fecha de Inicio</th>
       <th scope="col">Subtotal</th>
-      <th scope="col">Iva</th>
       <th scope="col">Total</th>
+      <th scope="col">Por Pagar</th>
+      <th scope="col">Por Recibir</th>
       <th scope="col">Concepto</th>
       <th scope="col">Comentarios Adicionales</th>
       <th scope="col">Proveedor</th>
@@ -33,18 +34,23 @@
         <td>{{$proyectos->nombre}}</td>
         <td>{{$proyectos->fechaInicio}}</td>
         <td>{{$proyectos->subtotal}}</td>
-        <td>{{$proyectos->iva}}</td>
         <td>{{$proyectos->total}}</td>
+        <td>{{$proyectos->porPagar}}</td>
+        <td>{{$proyectos->porRecibir}}</td>
         <td>{{$proyectos->concepto}}</td>
         <td>{{$proyectos->comentariosAdicionales}}</td>
-        <td>{{$proyectos->proveedor}}</td>
-        <td>{{$proyectos->cliente}}</td>
+        <td>{{$proyectos->proveedor_id}}</td>
+        <td>{{$proyectos->cliente_id}}</td>
         <td>
           <a href="{{ route('proyecto.edit', $proyectos->id) }}" class="btn btn-secondary">Edit</a>
         </td>
         <td>
           <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="{{ $proyectos->id }}" type="submit" class="btn btn-danger">Delete</button>
         </td>
+        <td>
+          <a href="{{ route('proyecto.edit', $proyectos->id) }}" class="btn btn-secondary">Registrar Transaccion</a>
+        </td>
+        <td>
 
       </tr>  
     @endforeach

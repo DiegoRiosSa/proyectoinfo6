@@ -3,7 +3,7 @@
 @section('content')
 <h1>Entidades</h1>
 
-<a href="{{ route('entidad.create')}}" class="btn btn-success">Create</a>
+<a href="{{ route('entidad.create')}}" class="btn btn-success">Registrar Entidad</a>
 
 
 <table class="table table-hover">
@@ -11,6 +11,7 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Razon Social</th>
+      <th scope="col">Tipo</th>
       <th scope="col">Persona</th>
       <th scope="col">RFC</th>
       <th scope="col">Domicilio</th>
@@ -25,7 +26,9 @@
     @foreach ($entidad as $entidades)
       <tr>
       <th scope="row">{{$entidades->id}}</th>
+    
         <td>{{$entidades->razonSocial}}</td>
+        <td>{{$entidades->persona_id}}</td>
         <td>{{$entidades->persona}}</td>
         <td>{{$entidades->RFC}}</td>
         <td>{{$entidades->domicilio}}</td>

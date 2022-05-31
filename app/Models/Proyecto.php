@@ -10,7 +10,9 @@ class Proyecto extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['nombre', 'fechaInicio', 'subtotal', 'iva', 'total', 'concepto', 'comentariosAdicionales', 'proveedor', 'cliente'];
+    protected $fillable = ['cliente_id', 'proveedor_id', 'nombre', 'fechaInicio', 'subtotal', 'iva', 'total', 'porPagar', 'porRecibir', 'concepto', 'comentariosAdicionales', 'proveedor', 'cliente'];
 
-    //public function 
+    public function entidads(){
+        return $this->belongsToMany(Entidad::class, 'proyecto_entidad');
+    }
 }

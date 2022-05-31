@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProyectoRequest;
 use App\Models\Proyecto;
+use App\Models\Proyecto_Entidad;
 use Illuminate\Http\Request;
 
 class ProyectoController extends Controller
@@ -61,8 +62,25 @@ class ProyectoController extends Controller
         $total = $proyectonuevo["subtotal"]*$iva + $proyectonuevo["subtotal"];
         $proyectonuevo["total"] = $total;
 
-        Proyecto::create($proyectonuevo);
+        $proyectonuevo["porPagar"]=$proyectonuevo["total"];
+        $proyectonuevo["porRecibir"]=$proyectonuevo["total"];
+        
+        
+        $proyecto = Proyecto::create($proyectonuevo);
+            /*
+        Proyecto_Entidad::create([
+            'proyecto_id' => $proyecto->id, 
+            'proveedor_id' => $proyecto->proveedor_id
+        ]);
 
+        $idproyecto = $proyectonuevo["proveedor_id"];
+        $idproveedor = $proyectonuevo["proveedor_id"];
+
+        $nuevotransitiva = Proyecto_Entidad::create([
+            'proyecto_id' => $idproyecto,
+            'proveedor_id' => $idproveedor
+        ]);*/
+        
         return back()->with('status', 'Proyecto created successfully');  
     }
 

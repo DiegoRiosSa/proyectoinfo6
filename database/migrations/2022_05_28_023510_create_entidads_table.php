@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('entidads', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('personal_id')->constrained('personas');
+            $table->foreignId('persona_id')->constrained('personas')->default(1);
             $table->string('razonSocial', 25);
             $table->enum('persona', ['Fisica','Moral'])->nullable()->default('Fisica');
             $table->string('RFC', 25);

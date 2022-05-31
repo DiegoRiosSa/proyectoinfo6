@@ -3,16 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 use Illuminate\Database\Eloquent\Model;
 
-
-
-class Persona extends Model
+class Proyecto_Entidad extends Model
 {
     use HasFactory;
 
-    public function entidad(){
-        return $this->hasMany('App\Models\Entidad', 'persona_id', 'id');
-    }
+    protected $fillable = ['proyecto_id', 'proveedor_id'];
+
 }

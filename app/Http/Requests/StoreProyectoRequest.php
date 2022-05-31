@@ -25,15 +25,18 @@ class StoreProyectoRequest extends FormRequest
     {
         return [
             //
+            'proveedor_id'=>'required', 
+            'cliente_id'=>'required',
             'nombre'=>'required | min:5 | max:25', 
             'fechaInicio'=>'required', 
             'subtotal'=>'required', 
             'iva',
             'total',
+            'porPagar',
+            'porRecibir',
             'concepto'=>'required | min:5 | max:25', 
-            'comentariosAdicionales'=>'required | max: 500', 
-            'proveedor'=>'required | min:5 | max:30', 
-            'cliente'=>'required | min:5 | max:30'
+            'comentariosAdicionales'=>'required | max: 500'
+            
         ];
     }
 }

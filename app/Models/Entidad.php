@@ -9,5 +9,9 @@ class Entidad extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['razonSocial', 'persona', 'RFC', 'domicilio', 'email', 'telefono'];
+    protected $fillable = ['persona_id', 'razonSocial', 'persona', 'RFC', 'domicilio', 'email', 'telefono'];
+
+    public function proyectos(){
+        return $this->belongsToMany(Proyecto::class, 'proyecto_entidad');
+    }
 }

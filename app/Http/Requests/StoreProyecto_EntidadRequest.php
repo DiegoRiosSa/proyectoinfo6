@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreEntidadRequest extends FormRequest
+class StoreProyecto_EntidadRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,13 +25,8 @@ class StoreEntidadRequest extends FormRequest
     {
         return [
             //
-            'razonSocial'=>'required | min:5 | max:25',  
-            'persona_id'=>'required',
-            'RFC'=>'required | min:5 | max:25', 
-            'persona'=>'required',
-            'domicilio'=>'required | min:5 | max:25', 
-            'email'=>'required | min: 10 | max: 25', 
-            'telefono'=>'required | min:5 | max:10'
+            'proyecto_id',
+            'proveedor_id'
         ];
     }
 }

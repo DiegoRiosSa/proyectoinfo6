@@ -26,17 +26,24 @@
         <br>
 
   
-    <div class="form-group">
-        <label for="exampleInputPassword1">Proveedor</label>
-        <input type="text" class="form-control" name="proveedor" id="proveedor" placeholder="Ingrese el nombre del proveedor" value="{{old('proveedor', $proyecto->proveedor)}}">
-        </div>
-        <br>
 
-    <div class="form-group">
-        <label for="exampleInputPassword1">Cliente</label>
-        <input type="text" class="form-control" name="cliente" id="cliente" placeholder="Ingrese el nombre del cliente" value="{{old('cliente', $proyecto->cliente)}}">
-        </div>  
-        <br> 
+        <div class="form-group">
+            <label for="exampleInputPassword1">Seleccione proveedor</label>
+            <select class="form-control" name="proveedor_id" id="proveedor_id" placeholder="Seleccione el tipo de persona" value="{{old('proveedor_id', $proyecto->proveedor_id)}}">
+                <option value="1">Proveedor 1</option>
+                <option value="2">Proveedor 2</option>
+              </select>    
+        </div>
+            <br>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">Seleccione cliente</label>
+                <select class="form-control" name="cliente_id" id="cliente_id" placeholder="Seleccione el tipo de persona" value="{{old('cliente_id', $proyecto->cliente_id)}}">
+                    <option value="1">Cliente 1</option>
+                    <option value="2">Cliente 2</option>
+                  </select>    
+            </div>
+                <br>
             
         <div class="form-group">
             <label for="exampleInputPassword1">Comentarios adicionales</label>

@@ -15,6 +15,7 @@
       <th scope="col">Fecha de Transaccion</th>
       <th scope="col">Método</th>
       <th scope="col">Referencia</th>
+      <th scope="col">Opciones</th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +34,7 @@
         <td>
           <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="{{ $transacciones->id }}" type="submit" class="btn btn-danger">Delete</button>
         </td>
+        
 
       </tr>  
     @endforeach
@@ -64,6 +66,8 @@
     </div>
   </div>
 </div>
+
+
 
 <script>
  

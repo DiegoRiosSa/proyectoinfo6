@@ -11,8 +11,8 @@
     <div class="form-group">
         <label for="exampleInputPassword1">Selecciona rol</label>
         <select class="form-control" name="role_id" id="role_id" placeholder="Seleccione el rol" value="{{old('role_id', $user->role_id)}}">
-            <option value="Administrador">Administrador</option>
-            <option value="UsuarioSP">UsuarioSP</option>
+            <option value="1">Administrador</option>
+            <option value="2">UsuarioSP</option>
         </select>    
     </div>
     <br>
