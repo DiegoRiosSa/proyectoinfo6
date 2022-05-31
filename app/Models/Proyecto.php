@@ -12,5 +12,5 @@ class Proyecto extends Model
 
     protected $fillable = ['nombre', 'fechaInicio', 'subtotal', 'concepto', 'comentariosAdicionales', 'proveedor', 'cliente'];
 
+    //public function 
 }
-

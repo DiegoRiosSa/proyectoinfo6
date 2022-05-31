@@ -42,10 +42,20 @@ class ProyectoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function store(StoreProyectoRequest $request)
     {
         //
         //dd($request);
+
+        //$total = $request->validated();
+        //$iva = .16;
+
         Proyecto::create($request->validated());
 
         return back()->with('status', 'Proyecto created successfully');  
