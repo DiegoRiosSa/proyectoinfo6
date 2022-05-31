@@ -22,10 +22,10 @@ Route::get('/', function () {
 });
 
 Route::resource('/proyecto',ProyectoController::class);
-
 Route::resource('/entidad',EntidadController::class);
-
 Route::resource('/transaccion',TransaccionController::class);
-
 Route::resource('/user',UserController::class);
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

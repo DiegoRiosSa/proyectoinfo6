@@ -6,12 +6,27 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+
         <li class="nav-item active">
           <a class="nav-link" href="{{ route('proyecto.index') }}">Home</a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="{{ route('proyecto.index') }}">Proyectos</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('entidad.index') }}">Entidades</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('transaccion.index') }}">Transacciones</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('user.index') }}">Usuarios</a>
+        </li>
+
 
         @auth
           <li class="nav-item dropdown">
